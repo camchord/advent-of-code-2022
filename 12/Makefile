@@ -8,9 +8,11 @@ compile-one:
 
 compiled-test-one:
 	@./part-one.out test-input.txt
+	@echo
 
 compiled-run-one:
 	@./part-one.out real-input.txt
+	@echo
 
 delete-one:
 	@rm part-one.out
@@ -25,6 +27,12 @@ run-one:
 	@make compiled-run-one
 	@make delete-one
 
+# Copies answer into clipboard to quickly paste into thing
+one:
+	@make compile-one
+	@./part-one.out real-input.txt | tr -d "\n" | pbcopy
+	@make delete-one
+
 # Commands for Part Two
 
 compile-two:
@@ -32,9 +40,11 @@ compile-two:
 
 compiled-test-two:
 	@./part-two.out test-input.txt
+	@echo
 
 compiled-run-two:
 	@./part-two.out real-input.txt
+	@echo
 
 delete-two:
 	@rm part-two.out
@@ -47,4 +57,9 @@ test-two:
 run-two:
 	@make compile-two
 	@make compiled-run-two
+	@make delete-two
+
+two:
+	@make compile-two
+	@./part-two.out real-input.txt | tr -d "\n" | pbcopy
 	@make delete-two

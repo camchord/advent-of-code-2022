@@ -24,6 +24,6 @@ int main(int argc, char const *argv[])
   string textInputFileName { argv[1] };
   vector<string> fileContent { readInputFile(textInputFileName) };
   int puzzleSolution { puzzleSolver(fileContent) };
-  cout << puzzleSolution << '\n';
+  cout << puzzleSolution;
   return 0;
 }
