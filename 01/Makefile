@@ -1,5 +1,5 @@
 default:
-	echo "Specify a branch"
+	@echo "Specify a branch"
 
 test-one:
 	@g++ -std=c++20 -o part-one.out part-one.cpp 
