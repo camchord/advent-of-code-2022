@@ -9,14 +9,31 @@ using namespace std;
 
 int puzzleSolver(vector<string> puzzleInput) 
 {
+  puzzleInput.push_back("");
   string puzzleResult {};
-  vector<int> numbersInput = convertToIntVector(puzzleInput);
-  int result {0};
-  for(int i = 0; i < numbersInput.size() - 1; i++) 
+  int max {0};
+  int maxTwo {0};
+  int maxThree {0};
+  int current {0};
+  for(int i = 0; i < puzzleInput.size(); i++) 
   {
-    result += 2 * numbersInput[i];
+    if (puzzleInput[i].size() > 0) {
+      current += stoi(puzzleInput[i]);
+    } else {
+      if (current >= max) {
+        maxThree = maxTwo;
+        maxTwo = max;
+        max = current;
+      } else if (current >= maxTwo) {
+        maxThree = maxTwo;
+        maxTwo = current;
+      } else if (current >= maxThree) {
+        maxThree = current;
+      }
+      current = 0;
+    }
   }
-  return result;
+  return max + maxTwo + maxThree;
 }
 
 int main(int argc, char const *argv[])
